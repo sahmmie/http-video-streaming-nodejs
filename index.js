@@ -40,9 +40,7 @@ app.get('/video/:id', async function (req, res) {
     const videoStream = fs.createReadStream(videoPath, { start, end });
     videoStream.pipe(res);
   } catch (error) {
-    console.log('====================================');
-    console.log(error);
-    console.log('====================================');
+    res.status(400).send(error.message);
   }
 });
 
